@@ -1,24 +1,24 @@
 <div class="view">
   <div class="layout layout--col gap--none">
     <div class="w--full px--3 mb--5">
-      {% render "show_progress", label: "Otwarte trasy", value: {{slopes_open_count}}, total: {{slopes_total_count}} %}
+      {% render "show_progress", id: "slopes_open_count", value: {{slopes_open_count}}, total: {{slopes_total_count}} %}
       <div class="divider my--3"></div>
-      {% render "show_progress", label: "Otwarte wyciągi",, value: {{lifts_open_count}}, total: {{lifts_total_count}} %}
+      {% render "show_progress", id: "lifts_open_count", value: {{lifts_open_count}}, total: {{lifts_total_count}} %}
     </div>
     <div class="flex flex--col gap--medium w--full flex--center">
       <div class="grid grid--cols-2">
-        {% render "show_item", label: "Góra", value: {{snow_mountain}}, unit: "cm" %}
-        {% render "show_item", label: "Dolina", value: {{snow_valley}}, unit: "cm" %}
+        {% render "show_item", id: "snow_mountain", value: {{snow_mountain}}, unit: "cm" %}
+        {% render "show_item", id: "snow_valley", value: {{snow_valley}}, unit: "cm" %}
       </div>
       <div class="divider"></div>
       <div class="grid grid--cols-2">
         {% render "last_snowfall_item", snowfall: {{last_snowfall}} %}
-        {% render "show_item", label: "Nowy śnieg", value: {{new_snow}}, unit: "cm"%}
+        {% render "show_item", id: "new_snow", value: {{new_snow}}, unit: "cm"%}
       </div>
       <div class="divider"></div>
       <div class="grid grid--cols-2">
-        {% render "show_item_small", label: "Charakterystyka", value: {{snow_condition}} %}
-        {% render "show_item_small", label: "Lawinowe", value: {{avalanche_warning}} %}
+        {% render "snow_condition_item", condition: {{snow_condition}} %}
+        {% render "show_item_small", id: "avalanche_info_small", value: {{avalanche_warning}} %}
       </div>
     </div>
   </div>
@@ -28,3 +28,4 @@
   <span class="title">Bergfex</span>
   <span class="instance">{{ resort_name }}</span>
 </div>
+{% render "translations", locale: trmnl.user.locale %}

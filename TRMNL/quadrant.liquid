@@ -1,18 +1,19 @@
   <div class="layout layout--col gap--none">
     <div class="flex flex--col gap--medium w--full flex--center">
       <div class="grid grid--cols-2">
-        {% render "show_item", label: "Góra", value: {{snow_mountain}}, unit: "cm" %}
-        {% render "show_item", label: "Dolina", value: {{snow_valley}}, unit: "cm" %}
+        {% render "show_item", id: "snow_mountain", value: {{snow_mountain}}, unit: "cm" %}
+        {% render "show_item", id: "snow_valley", value: {{snow_valley}}, unit: "cm" %}
       </div>
       <div class="divider"></div>
       <div class="grid grid--cols-2">
         {% render "last_snowfall_item", snowfall: {{last_snowfall}} %}
-        {% render "show_item", label: "Nowy śnieg", value: {{new_snow}}, unit: "cm" %}
+        {% render "show_item", id: "new_snow", value: {{new_snow}}, unit: "cm" %}
       </div>
     </div>
   </div>
 <div class="title_bar">
   <img class="image" src="https://www.bergfex.at/c/wp-content/uploads/2023/06/icon-tours.svg">
-
   <span class="instance">{{ resort_name }}</span>
 </div>
+
+{% render "translations", locale: trmnl.user.locale %}

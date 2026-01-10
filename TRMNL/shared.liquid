@@ -4,7 +4,7 @@
   <div class="meta"></div>
   <div class="content">
     <span class="value value--tnums valu">{{ value }}{{ unit }}</span>
-    <span class="label">{{ label }}</span>
+    <span class="label" id="{{id}}">{{ label }}</span>
   </div>
 </div>
 {% endtemplate %}
@@ -13,8 +13,8 @@
 <div class="item">
   <div class="meta"></div>
   <div class="content">
-    <span class="value value--tnums value--small">{{ value }}</span>
-    <span class="label">{{ label }}</span>
+    <span class="value value--tnums value--small" id="{{id_value}}">{{ value }}</span>
+    <span class="label" id="{{id}}">{{ label }}</span>
   </div>
 </div>
 {% endtemplate %}
@@ -22,7 +22,7 @@
 {% template show_progress %}
 <div class="progress-bar progress-bar--small progress-bar--emphasis-2">
   <div class="content">
-    <span class="label label">{{ label }}</span>
+    <span class="label label" id="{{id}}">{{ label }}</span>
     <span class="value value">{{value}}{{unit}}/{{total}}{{unit}}</span>
   </div>
   <div class="track">
@@ -33,10 +33,59 @@
 
 {% template last_snowfall_item %}
   {% assign last = snowfall | split: " " | first %}
-  {% render "show_item_small", label: "Ostatni opad", value: {{last}} %}
+  {% render "show_item_small", id: "last_snowfall", value: {{last}} %}
 {% endtemplate %}
 
 {% template snow_condition_item %}
-  {% assign value = condition | replace: "unknown", "nieznana" %}
-  {% render "show_item_small", label: "Charakterystyka", value: {{value}} %}
+  {% render "show_item_small", id: "snow_type",id_value: "snow_type_value", value: {{condition}} %}
 {% endtemplate %}
+
+{% template translations %}
+<script type="text/javascript">
+  const translations = {
+    pl: {
+      slopes_open_count: "Otwarte trasy",
+      lifts_open_count:"Otwarte wyciągi",
+      snow_mountain: "Góra",
+      snow_valley: "Dolina",
+      snow_type: "Charakterystyka",
+      new_snow: "Nowy śnieg",
+      last_snowfall: "Ostatni opad",
+      avalanche_info: "Zagrożenie lawinowe",
+      avalanche_info_small: "Lawinowe",
+      unknown: "nieznane"
+    },
+    en: {
+      slopes_open_count: "Open pistes",
+      lifts_open_count:"Open lifts",
+      snow_mountain: "Mountain",
+      snow_valley: "Valley",
+      snow_type: "Snow condition",
+      new_snow: "New snow",
+      last_snowfall: "Latest snowfall",
+      avalanche_info: "Avalanche alert",
+      avalanche_info_small: "Avalanche",
+      unknown: "unknown"
+    },
+    de: {
+      slopes_open_count: "Offene Pisten",
+      lifts_open_count:"Offene Lifte",
+      snow_mountain: "Berg",
+      snow_valley: "Tal",
+      snow_type: "Schneezustand",
+      new_snow: "Neuschnee",
+      last_snowfall: "Letzter Schneefall",
+      avalanche_info: "Lawinenwarnstufe",
+      avalanche_info_small: "Lawinenwarnstufe",
+      unknown: "unknown"
+    }
+  }
+  const locale = "{{locale}}"
+  const translation = translations[locale] ?? translations['en']
+  for (const [key, value] of Object.entries(translation)) {
+    if(document.getElementById(key)) document.getElementById(key).textContent=value
+  }
+  if(document.getElementById("snow_type_value")?.textContent == 'unknown'){
+    document.getElementById("snow_type_value").textContent =translation.unknown
+  }
+</script>{% endtemplate %}

@@ -1,0 +1,32 @@
+<!-- import Highcharts libraries -->
+{% template show_item %}
+<div class="item">
+  <div class="meta"></div>
+  <div class="content">
+    <span class="value value--tnums valu">{{ value }}{{ unit }}</span>
+    <span class="label">{{ label }}</span>
+  </div>
+</div>
+{% endtemplate %}
+
+{% template show_item_small %}
+<div class="item">
+  <div class="meta"></div>
+  <div class="content">
+    <span class="value value--tnums value--small">{{ value }}</span>
+    <span class="label">{{ label }}</span>
+  </div>
+</div>
+{% endtemplate %}
+
+{% template show_progress %}
+<div class="progress-bar progress-bar--small progress-bar--emphasis-2">
+  <div class="content">
+    <span class="label label">{{ label }}</span>
+    <span class="value value">{{value}}{{unit}}/{{total}}{{unit}}</span>
+  </div>
+  <div class="track">
+    <div class="fill" style="width: {{value | times: 100 | divided_by: total }}%"></div>
+  </div>
+</div>
+{% endtemplate %}

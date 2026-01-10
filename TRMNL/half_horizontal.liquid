@@ -1,0 +1,28 @@
+<div class="view view--full">
+  <div class="layout layout--col gap--none">
+    <span class="title">{{resort_name}}</span>
+    <div class="divider my--2"></div>
+    <div class="grid grid--cols-5">
+      <div class="flex flex--col  col--span-2">
+        <div class="w--full px--2">
+          {% render "show_progress", label: "Otwarte trasy", value: {{slopes_open_count}}, total: {{slopes_total_count}} %}
+          <div class="divider my--3"></div>
+          {% render "show_progress", label: "Otwarte wyciągi", value: {{lifts_open_count}}, total: {{lifts_total_count}} %}
+        </div>
+      </div>
+      <div class="col--span-3 pl--10">
+        <div class="flex flex--col gap--medium w--full flex--center">
+          <div class="grid grid--cols-2">
+            {% render "show_item", label: "Góra", value: {{snow_mountain}}, unit: "cm" %}
+            {% render "show_item", label: "Dolina", value: {{snow_valley}}, unit: "cm" %}
+          </div>
+          <div class="divider"></div>
+          <div class="grid grid--cols-2">
+            {% render "show_item_small", label: "Ostatni opad", value: {{last_snowfall}} %}
+            {% render "show_item", label: "Nowy śnieg", value: {{new_snow}}, unit: "cm" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,3 +30,13 @@
   </div>
 </div>
 {% endtemplate %}
+
+{% template last_snowfall_item %}
+  {% assign last = snowfall | split: " " | first %}
+  {% render "show_item_small", label: "Ostatni opad", value: {{last}} %}
+{% endtemplate %}
+
+{% template snow_condition_item %}
+  {% assign value = condition | replace: "unknown", "nieznana" %}
+  {% render "show_item_small", label: "Charakterystyka", value: {{value}} %}
+{% endtemplate %}

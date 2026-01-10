@@ -1,7 +1,4 @@
-<div class="view">
   <div class="layout layout--col gap--none">
-    <span class="title">{{resort_name}}</span>
-    <div class="divider my--2"></div>
     <div class="flex flex--col gap--medium w--full flex--center">
       <div class="grid grid--cols-2">
         {% render "show_item", label: "Góra", value: {{snow_mountain}}, unit: "cm" %}
@@ -9,9 +6,13 @@
       </div>
       <div class="divider"></div>
       <div class="grid grid--cols-2">
-        {% render "show_item_small", label: "Ostatni opad", value: {{last_snowfall}} %}
-        {% render "show_item", label: {{"Nowy śnieg"}}, value: {{new_snow}}, unit: "cm" %}
+        {% render "last_snowfall_item", snowfall: {{last_snowfall}} %}
+        {% render "show_item", label: "Nowy śnieg", value: {{new_snow}}, unit: "cm" %}
       </div>
     </div>
   </div>
+<div class="title_bar">
+  <img class="image" src="https://www.bergfex.at/c/wp-content/uploads/2023/06/icon-tours.svg">
+
+  <span class="instance">{{ resort_name }}</span>
 </div>

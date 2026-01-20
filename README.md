@@ -1,5 +1,4 @@
-# trmnl_bergfex_snow
-❄️ TRMNL Bergfex Snow Report
+# ❄️ TRMNL Bergfex Snow Report
 
 Show your favouring ski resorts status on your [TRMNL](https://usetrmnl.com/)
 
@@ -7,10 +6,19 @@ Show your favouring ski resorts status on your [TRMNL](https://usetrmnl.com/)
 
 ## Installation
 
-It works with Home Assistant, so first step is to get your Home Assistant installation.
+**This plugin requires Home Assistant to work.**
 
-Then install [bergfex](https://github.com/timmaurice/bergfex) integraion.
-When adding new resort, you can put webhook_url - get it from trmnl plugin setting page
+- Install [Bergfex Snow Report Integration](https://github.com/timmaurice/bergfex).
+- Get Webhook URL from plugin page on your TRMNL website.
+- Add new resort using Home Assistant integration. On last step, you can also put Webhook URL from TRML
 
-(note - for now work on webhook_url in bergfex is still in progress
 
+## FAQ
+
+### Why Home Assistant?
+
+AFAIK Bergfex does not expose any public API, so we can ony scrape data manually.
+
+### Data field is missing for my resort
+
+Please check if Bergfex website provide this data for given resort. Various resorts have different data available. It is on my TODO list to make data fetching more flexible.
